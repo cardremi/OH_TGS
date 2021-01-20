@@ -2,12 +2,12 @@ import React from 'react'
 import { View, Text, StyleSheet, Dimensions, TouchableOpacity,Image } from 'react-native'
 
 const { width, height } = Dimensions.get('window');
-export default function MovieItem({movie}) {
+export default function MovieItem({movie , onTap}) {
     return (
         <View style={styles.root}>
-            <TouchableOpacity style={styles.container}>
+            <TouchableOpacity onPress={onTap} style={styles.container}>
         <View style={{flex:1}}>
-            <Image source={{uri:'https://image.tmdb.org/t/p/w500' + movie.backdrop_path}} style={{...StyleSheet.absoluteFillObject}}/>
+            <Image source={{uri:'https://image.tmdb.org/t/p/w500' + movie.poster_path}} style={{...StyleSheet.absoluteFillObject}}/>
         </View>
             
             <Text style={styles.title}>{movie.original_title}</Text>

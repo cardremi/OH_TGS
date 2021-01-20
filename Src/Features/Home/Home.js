@@ -6,8 +6,10 @@ import {useDispatch} from 'react-redux'
 import {useSelector} from 'react-redux'
 import MovieItem from '../../Component/MovieItem'
 
-const Home = () => {
-
+const Home = (props) => {
+    const gotoDetailPage =  (id) =>{
+        props.navigation.navigate ('Martabak' , id)
+    }
     const fetchPopularMovies = async () => {
         const respond = await axios.get (URL.baseURL + URL.popularURL + URL.APIkey)
         .then (res => res.data)
@@ -52,7 +54,7 @@ const Home = () => {
         numColumns = {2}
         renderItem = {({item}) => {
             return (
-                <MovieItem movie={item}/>
+                <MovieItem onTap={() => gotoDetailPage (item.id)} movie={item}/>
             )
         }}
         />
